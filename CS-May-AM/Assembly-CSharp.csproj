@@ -65,6 +65,7 @@
     <Compile Include="Assets\MayClass\Scripts\MovementMay.cs" />
     <Compile Include="Assets\MayClass\Scripts\Paintball.cs" />
     <Compile Include="Assets\MayClass\Scripts\Shooting.cs" />
+    <Compile Include="Assets\MayClass\Scripts\ShotCounter.cs" />
     <Compile Include="Assets\MayClass\Scripts\SimHandVR.cs" />
     <Compile Include="Assets\MayClass\Scripts\TestButton.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />

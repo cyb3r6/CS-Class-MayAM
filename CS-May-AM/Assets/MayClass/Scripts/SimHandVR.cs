@@ -8,6 +8,9 @@ public class SimHandVR : MonoBehaviour
     public bool isLeftHand;     // if isLeftHand is true, then the script is attached to the left hand.
     private string grip;        // to hold information of our Input Axis ID's (LeftGrip, RightGrip)
 
+    public GameObject collidingObject;
+    public GameObject heldObject;
+
     // Awake is used for Initialization
     void Awake()
     {
@@ -19,9 +22,22 @@ public class SimHandVR : MonoBehaviour
         {
             grip = "RightGrip";
         }
-
     }
 
+    private void OnTriggerStay(Collider thingwecollidedwith)
+    {
+        if (thingwecollidedwith.GetComponent<Rigidbody>())
+        {
+            collidingObject = thingwecollidedwith.gameObject;
+        }        
+    }
+    private void OnTriggerExit(Collider thingwecollidedwith)
+    {
+        if(thingwecollidedwith == collidingObject)
+        {
+            collidingObject = null;
+        }
+    }
 
     void Update()
     {
