@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class SimHandVR : MonoBehaviour
 {
     public Animator handAnim;
     public bool isLeftHand;     // if isLeftHand is true, then the script is attached to the left hand.
-    private string grip;        // to hold information of our Input Axis ID's (LeftGrip, RightGrip)
+    private string trigger;        // to hold information of our Input Axis ID's (LeftGrip, RightGrip)
 
     public GameObject collidingObject;
     public GameObject heldObject;
@@ -16,11 +17,11 @@ public class SimHandVR : MonoBehaviour
     {
         if (isLeftHand)     // short hand for (isLeftHand == true)
         {
-            grip = "LeftGrip";
+            trigger = "LeftTrigger";
         }
         else
         {
-            grip = "RightGrip";
+            trigger = "RightTrigger";
         }
     }
 
@@ -41,13 +42,35 @@ public class SimHandVR : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis(grip) > 0.8f)
+        if (Input.GetAxis(trigger) > 0.8f)
         {
             handAnim.SetBool("isClosing", true);
+            if(collidingObject != null)
+            {
+                heldObject = collidingObject;
+                Grab();
+            }            
         }
-        if (Input.GetAxis(grip) < 0.8f)
+        if (Input.GetAxis(trigger) < 0.8f)
         {
             handAnim.SetBool("isClosing", false);
+            if(heldObject != null)
+            {
+                Release();
+                heldObject = null;
+            }            
         }
+    }    
+
+    private void Grab()
+    {
+        heldObject.transform.SetParent(this.transform);
+        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+    }
+    private void Release()
+    {
+        heldObject.transform.SetParent(null);
+        heldObject.GetComponent<Rigidbody>().isKinematic = false;
+        heldObject.GetComponent<Rigidbody>().useGravity = true;
     }
 }
