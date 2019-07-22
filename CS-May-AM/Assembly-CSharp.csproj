@@ -72,6 +72,7 @@
     <Compile Include="Assets\MayClass\Scripts\SimHandVR.cs" />
     <Compile Include="Assets\MayClass\Scripts\TestButton.cs" />
     <Compile Include="Assets\MayClass\Scripts\TouchButton.cs" />
+    <Compile Include="Assets\MayClass\Scripts\VRTeleportation.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />

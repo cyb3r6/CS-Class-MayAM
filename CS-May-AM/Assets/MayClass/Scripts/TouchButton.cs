@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class TouchButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform button, up, down;
+    public AudioSource audioSource;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == "Player")
+        {
+            button.position = down.position;
+            audioSource.Play();
+        }        
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            button.position = up.position;
+        }
     }
 }
