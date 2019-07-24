@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Tracked-image-Eclipse-1-002" size="0.089000 0.146196" />
+    <ImageTarget name="Tracked-image-Voltera" size="0.105000 0.026353" />
+    <ImageTarget name="boiler-control-panel" size="500.000000 500.000000" />
+    <ImageTarget name="ZD5-trackedimage" size="0.089000 0.059176" />
+    <ImageTarget name="tracked-image-house" size="0.089000 0.048866" />
+  </Tracking>
+</QCARConfig>

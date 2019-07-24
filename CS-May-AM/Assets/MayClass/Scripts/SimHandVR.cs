@@ -8,6 +8,7 @@ public class SimHandVR : MonoBehaviour
     public Animator handAnim;
     public bool isLeftHand;     // if isLeftHand is true, then the script is attached to the left hand.
     public float forceMultiplier;
+    public Transform snapPosition;
 
     private string trigger;        // to hold information of our Input Axis ID's (LeftGrip, RightGrip)
     private bool triggerHeld;      // stop calling our Grab methods so many dang times
@@ -29,10 +30,12 @@ public class SimHandVR : MonoBehaviour
         if (isLeftHand)     // short hand for (isLeftHand == true)
         {
             trigger = "LeftTrigger";
+            grip = "LeftGrip";
         }
         else
         {
             trigger = "RightTrigger";
+            grip = "RightGrip";
         }
     }
 
@@ -53,9 +56,16 @@ public class SimHandVR : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetAxis(trigger) >= 0f)
+        {
+            Debug.Log("trigger value: " + (Input.GetAxis(trigger)));
+            handAnim.Play("ENSNFT VR HANDS Fist Closing", 0, Input.GetAxis(trigger));
+            
+        }
+
         if (Input.GetAxis(trigger) > 0.8f && triggerHeld == false)
         {
-            handAnim.SetBool("isClosing", true);
+            //handAnim.SetBool("isClosing", true);
             triggerHeld = true;
 
             if(collidingObject != null)
@@ -67,7 +77,7 @@ public class SimHandVR : MonoBehaviour
         }
         if (Input.GetAxis(trigger) < 0.8f && triggerHeld == true)
         {
-            handAnim.SetBool("isClosing", false);
+            //handAnim.SetBool("isClosing", false);
             triggerHeld = false;
 
             if(heldObject != null)
@@ -77,6 +87,17 @@ public class SimHandVR : MonoBehaviour
                 heldObject = null;
             }            
         }
+
+        if(Input.GetAxis(grip) > 0.5f && !gripHeld && heldObject)
+        {
+            heldObject.BroadcastMessage("Interactable");
+            gripHeld = true;
+        }
+        if (Input.GetAxis(grip) < 0.5f && gripHeld)
+        {
+            gripHeld = false;
+        }
+
         handVelocity = transform.position - oldHandPosition;
         oldHandPosition = transform.position;
         handAngularVelocity = transform.eulerAngles - oldHandRotation;
@@ -87,6 +108,8 @@ public class SimHandVR : MonoBehaviour
     {        
         heldObject.transform.SetParent(this.transform);
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
+        heldObject.transform.rotation = snapPosition.rotation;
+        heldObject.transform.position = snapPosition.position;
     }
 
     private void AdvGrab()
@@ -94,7 +117,8 @@ public class SimHandVR : MonoBehaviour
         FixedJoint fx = gameObject.AddComponent<FixedJoint>();
         fx.connectedBody = heldObject.GetComponent<Rigidbody>();
         fx.breakForce = 2000;
-        heldObject.transform.rotation = transform.rotation;
+        heldObject.transform.rotation = snapPosition.rotation;
+        heldObject.transform.position = snapPosition.position;
     }
     private void Release()
     {
