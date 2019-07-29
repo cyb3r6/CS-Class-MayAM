@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MayClass/Scenes/VR-Scene May.unity
-    guid: 400c1a347d9124d4eaf8810105a42093
-  - enabled: 1
-    path: Assets/MayClass/Scenes/UtilityAR.unity
-    guid: a1b16c75378ea9e4db728af5b23a39e9
+    path: Assets/MayClass/Scenes/MainIntro.unity
+    guid: b45a5fb8401d8af4e973ec7c72c32e06
   - enabled: 1
     path: Assets/MayClass/Scenes/VR-Scene2.unity
     guid: 912957d9d674c2a47b40f5e6db536860
+  - enabled: 1
+    path: Assets/MayClass/Scenes/UtilityAR.unity
+    guid: a1b16c75378ea9e4db728af5b23a39e9
   m_configObjects: {}

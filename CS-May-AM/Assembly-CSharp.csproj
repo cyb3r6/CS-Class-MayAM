@@ -64,6 +64,7 @@
     <Compile Include="Assets\MayClass\Scripts\Chase.cs" />
     <Compile Include="Assets\MayClass\Scripts\Flashlight.cs" />
     <Compile Include="Assets\MayClass\Scripts\InstructionSteps.cs" />
+    <Compile Include="Assets\MayClass\Scripts\MainIntro.cs" />
     <Compile Include="Assets\MayClass\Scripts\MovementMay.cs" />
     <Compile Include="Assets\MayClass\Scripts\NavigationAI.cs" />
     <Compile Include="Assets\MayClass\Scripts\Paintball.cs" />
@@ -72,8 +73,11 @@
     <Compile Include="Assets\MayClass\Scripts\ShotCounter.cs" />
     <Compile Include="Assets\MayClass\Scripts\SimHandVR.cs" />
     <Compile Include="Assets\MayClass\Scripts\TestButton.cs" />
+    <Compile Include="Assets\MayClass\Scripts\Timer.cs" />
     <Compile Include="Assets\MayClass\Scripts\TouchButton.cs" />
+    <Compile Include="Assets\MayClass\Scripts\VRShooting.cs" />
     <Compile Include="Assets\MayClass\Scripts\VRTeleportation.cs" />
+    <Compile Include="Assets\MayClass\Scripts\VRTractorBeam.cs" />
     <Compile Include="Assets\MayClass\Scripts\XRayableItem.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
