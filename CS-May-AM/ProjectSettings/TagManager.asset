@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Paintable
   - Paint
+  - pushbutton
   layers:
   - Default
   - TransparentFX
