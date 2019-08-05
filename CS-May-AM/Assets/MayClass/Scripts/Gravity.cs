@@ -16,4 +16,15 @@ public class Gravity : MonoBehaviour
     {
         
     }
+
+
+    void CalculateGravity(GravitationObject Object1, GravitationObject Object2, Rigidbody m1, Rigidbody m2)
+    {
+        Vector3 r = m1.position - m2.position;
+        if(r == Vector3.zero)
+        {
+            return;
+        }
+        Vector3 force = r.normalized * (gravitationalForce * m1.mass * m2.mass / Mathf.Pow(r.magnitude, 2));
+    }
 }
