@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MayClass/Scenes/VR-Scene2.unity
     guid: 912957d9d674c2a47b40f5e6db536860
-  - enabled: 1
+  - enabled: 0
     path: Assets/MayClass/Scenes/UtilityAR.unity
     guid: a1b16c75378ea9e4db728af5b23a39e9
   m_configObjects: {}

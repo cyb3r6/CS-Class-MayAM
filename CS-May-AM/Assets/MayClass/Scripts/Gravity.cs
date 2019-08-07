@@ -14,7 +14,19 @@ public class Gravity : MonoBehaviour
     
     void FixedUpdate()
     {
-        
+        int loopCount = 1;
+
+        foreach(GravitationObject objectGravity in gravityObjects)
+        {
+            for(int i = loopCount; i< gravityObjects.Count; i++)
+            {
+                Rigidbody objectGravityRigidbody = objectGravity.rigidBody;
+                CalculateGravity(objectGravity, gravityObjects[i], objectGravityRigidbody, gravityObjects[i].rigidBody);
+            }
+            loopCount++;
+        }
+        AddGravitationalForce();
+
     }
 
 
@@ -26,5 +38,15 @@ public class Gravity : MonoBehaviour
             return;
         }
         Vector3 force = r.normalized * (gravitationalForce * m1.mass * m2.mass / Mathf.Pow(r.magnitude, 2));
+
+        Object1.endForce -= force;
+        Object2.endForce += force;
+    }
+    void AddGravitationalForce()
+    {
+        foreach(GravitationObject tempObject in gravityObjects)
+        {
+            tempObject.AddEndForce();
+        }
     }
 }
